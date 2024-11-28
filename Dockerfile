@@ -1,4 +1,7 @@
 FROM gradle:8.2.1-jdk17-alpine AS build
+USER root
+RUN chown -R gradle:gradle /home/gradle
+USER gradle
 WORKDIR /app
 COPY src /app/src
 COPY build.gradle /app
